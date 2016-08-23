@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.hnust.dao.IAdminDao">
+	<resultMap id="BaseResultMap" type="com.cn.hnust.pojo.Admin">
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		name, password
+	</sql>
+
+	<select id="selectByName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from master
+		where name = #{name,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryAll" resultMap="BaseResultMap" resultType="List">
+		select
+		<include refid="Base_Column_List" />
+		from master
+	</select>
+
+	<delete id="deleteByName" parameterType="java.lang.String">
+		delete from master
+		where name = #{name,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.cn.hnust.pojo.Admin">
+		insert into master (name, password)
+		values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateByName" parameterType="com.cn.hnust.pojo.Admin">
+		update master
+		set
+		password = #{password,jdbcType=VARCHAR}
+		where name = #{name,jdbcType=VARCHAR}
+	</update>
+</mapper>

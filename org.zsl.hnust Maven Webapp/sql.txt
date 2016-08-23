@@ -1,0 +1,34 @@
+create database test;//创建数据库
+
+use test;
+
+//创建表 user_t
+create table user_t(
+   id INT NOT NULL AUTO_INCREMENT,
+   user_name VARCHAR(100) NOT NULL,
+   password VARCHAR(40) NOT NULL,
+   age INTEGER,
+   PRIMARY KEY ( id )
+);
+
+//插入数据
+INSERT INTO user_t
+     (user_name, password, age)
+     VALUES
+     ("test1", "123456", 20);
+
+//创建表 master ，管理员登录账户
+create table master(
+   name VARCHAR(20) NOT NULL,
+   password VARCHAR(10) NOT NULL,
+   PRIMARY KEY ( name )
+);
+     
+//设置管理账户 密码
+INSERT INTO master
+     (name, password)
+     VALUES
+     ("admin", "111111");
+     
+     
+     
