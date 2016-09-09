@@ -23,11 +23,10 @@ public class TestAnnotationAspect {
 	//@Pointcut("execution(* com.cn.hnust.service.impl.*.*(..))")
 	@Pointcut("execution(* com.cn.hnust.service.impl.UserServiceImpl.*(..))")
 	private void pointCutMethod() {  
-		
-		System.out.println("-------pointCutMethod---------只是匹配getUserById方法-----");
+		System.out.println("-------pointCutMethod--------------");
 	}  
 
-	//声明前置通知  
+	//声明前置通知   
 	@Before("pointCutMethod()")  
 	public void doBefore()  {  
 		System.out.println("前置通知");  
@@ -53,7 +52,7 @@ public class TestAnnotationAspect {
 		System.out.println("最终通知");  
 	}  
 
-	//声明环绕通知  
+	//声明环绕通知   一般用了环绕通知 就不需要使用before 和after，都放在环绕通知里面处理
 	@Around("pointCutMethod()")  
 	public Object doAround(ProceedingJoinPoint pjp) throws Throwable {  
 		System.out.println("进入方法---环绕通知");  

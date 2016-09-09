@@ -14,9 +14,8 @@
         
         <import resource="classpath:spring-mybatis.xml" />
         
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	<bean
-		class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator" />
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> 
+<!-- 	<bean	class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator" /> -->
 
 	
 	<bean id="aspectBean" class="com.cn.hnust.aop.TestAnnotationAspect" />

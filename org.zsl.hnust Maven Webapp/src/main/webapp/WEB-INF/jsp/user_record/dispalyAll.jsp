@@ -15,9 +15,7 @@
 <body>
 	<div align="center">
 		<h1>所有用户信息</h1>
-
 		<table>
-
 			<tr>
 				<td align="center">用户id</td>
 				<td align="center">用户姓名</td>

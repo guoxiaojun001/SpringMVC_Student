@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cn.hnust.pojo.Admin;
@@ -22,14 +23,14 @@ public class LoginController {
 
 	@Resource
 	private IUserService userService;//学生信息 管理
-	
+
 	@Resource
 	private IAdminService adminService;
 
 	@RequestMapping("/login")
 	public String loginSystem() {
 		// WEB-INF/jsp/user_record/record.jsp
-		
+
 		return "user_record/login";
 	}
 
@@ -40,27 +41,27 @@ public class LoginController {
 		//获取用户输入信息，判断登录状态
 		String name = request.getParameter("user_name");
 		String password = request.getParameter("password");
-		
+
 		System.out.println("name = " + name);
 		System.out.println("password = " + password);
-		
+
 		if(null == name || null == password){
 			return "user_record/loginfailure";
 		}
-		
+
 		if("".equals(name) || "".equals(password)){
 			return "user_record/loginfailure";
 		}
-		
+
 		Admin admin = this.adminService.getAdminById(name);
-		
+
 		if(null == admin){
 			return "user_record/loginfailure";
 		}
-		
+
 		System.out.println("数据库查询的账号信息为 ： " + admin.getName() + " : " + admin.getPassword());
-		
-		
+
+
 		if(admin.getName().equals(name.trim()) && admin.getPassword().equals(password)){
 			//登录成功
 			return "user_record/manager";
@@ -68,7 +69,17 @@ public class LoginController {
 			//登录失败
 			return "user_record/loginfailure";
 		}
+
+	}
+	
+	
+	@RequestMapping("/test")
+	@ResponseBody
+	public String test(){
 		
+		System.out.println("执行到ajax方法了");
+		
+		return "this is a test";
 	}
 
 	@RequestMapping("/itemInsert")
@@ -79,7 +90,6 @@ public class LoginController {
 
 	@RequestMapping(value="/saveItem", method = RequestMethod.POST)
 	public String saveItem(HttpServletRequest request) {
-
 		String name = request.getParameter("user_name");
 		String password = request.getParameter("password");
 		String age = request.getParameter("age");
@@ -94,6 +104,22 @@ public class LoginController {
 		record1.setAge(Integer.valueOf(age));
 
 		this.userService.insert(record1);
+		return "user_record/result";
+	}
+
+
+	@RequestMapping("/disResult")
+	public String disResult(HttpServletRequest request){
+
+		try {
+			List<User> resultList= userService.queryAll();
+			request.setAttribute("resultList", resultList);
+			if(resultList==null){
+				return "index";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "user_record/result";
 	}
@@ -150,7 +176,6 @@ public class LoginController {
 		}
 
 		model.addAttribute("userList", userList);
-
 		//		ModelAndView mv = new ModelAndView();  
 		//		//添加模型数据 可以是任意的POJO对象  
 		//		mv.addObject("userList", userList);  
@@ -170,7 +195,7 @@ public class LoginController {
 
 	@RequestMapping("/deleteresult")
 	public ModelAndView deleteResult(HttpServletRequest request){
-		
+
 		String user_id = request.getParameter("user_id");
 		User  user = userService.getUserById(Integer.valueOf(user_id));
 
