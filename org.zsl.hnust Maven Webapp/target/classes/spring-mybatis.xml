@@ -9,8 +9,8 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd  
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.cn.hnust" />
+	<!-- 自动扫描  现在放到applicationContext中-->
+	<!-- <context:component-scan base-package="com.cn.hnust" /> -->
 	<!-- 引入配置文件 -->
 	
 	<bean id="propertyConfigurer"

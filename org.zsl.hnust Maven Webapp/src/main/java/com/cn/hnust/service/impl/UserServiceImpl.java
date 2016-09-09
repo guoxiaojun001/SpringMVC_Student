@@ -16,13 +16,14 @@ public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 	@Override
 	public User getUserById(int userId) {
-		// TODO Auto-generated method stub
+		System.out.println("-------getUserById----请查看 我的前后通知-----------"); 
 		return this.userDao.selectByPrimaryKey(userId);
 	}
 	
 	
 	@Override
 	public void deleteByPrimaryKey(int id) {
+		System.out.println("-------deleteByPrimaryKey----请查看 我的前后通知-----------"); 
 		 this.userDao.deleteByPrimaryKey(id);
 		
 	}

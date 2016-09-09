@@ -437,3 +437,8 @@
 [INFO] [2014-07-18 21:22:41][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 [INFO] [2014-07-18 21:22:42][org.zsl.testmybatis.TestMyBatis]{"age":24,"id":1,"password":"sfasgfaf","userName":"测试"}
 [INFO] [2014-07-18 21:22:42][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@10fdc382: startup date [Fri Jul 18 21:22:41 CST 2014]; root of context hierarchy
+[INFO] [2016-09-08 17:34:44][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59f95c5d: startup date [Thu Sep 08 17:34:44 CST 2016]; root of context hierarchy
+[INFO] [2016-09-08 17:34:44][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO] [2016-09-08 17:36:03][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59f95c5d: startup date [Thu Sep 08 17:36:03 CST 2016]; root of context hierarchy
+[INFO] [2016-09-08 17:36:03][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO] [2016-09-08 17:36:04][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring

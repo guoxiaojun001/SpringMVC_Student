@@ -19,6 +19,7 @@ public class AdminServiceImpl implements IAdminService{
 	@Override
 	public Admin getAdminById(String name) {
 		
+		System.out.println("-------getAdminById----请查看 我的前后通知-----------"); 
 		return this.iAdminDao.selectByName(name);
 	}
 
