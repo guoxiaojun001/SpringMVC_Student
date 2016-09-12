@@ -92,10 +92,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 
+<script src="<%=request.getContextPath()%>/js/jsonList.js">
+</script> 
 
-
-<%-- <script src="<%=request.getContextPath()%>/js/jsonList.js">
-</script> --%>
 
 <script type="text/javascript">
 function testjqueryList()
@@ -129,9 +128,10 @@ function testjqueryList()
 	});
 
 }
-
-
 </script>
+
+
+
 <div align="center">
 <table>
 
@@ -149,9 +149,18 @@ function testjqueryList()
 </table>
 
 <input id="testList" value="jquery2">
-<input type="button" value="click me!" onclick="testjqueryList();">
+<input type="button" value="获取列表" onclick="testjqueryList();">
 
 </div>
+
+
+<script type="text/javascript">
+var jsdata = testJs();
+alert("获取返回值jsdata == " + jsdata);
+</script>
+<input type="button" value="测试调用外部js" onclick="testJs();">
+
+
 
 </body>
 </html>
