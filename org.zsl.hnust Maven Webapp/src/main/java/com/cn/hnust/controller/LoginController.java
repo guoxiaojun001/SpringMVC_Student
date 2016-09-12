@@ -87,10 +87,22 @@ public class LoginController {
 	@RequestMapping("/jquery")
 	@ResponseBody
 	public String testJquery(){
+		String data = "{\"name\":\"百度\",\"url\":\"http://www.baidu.com\",\"page\":88,\"isNonProfit\":true,\"address\":{\"street\":\"科技园路.\",\"city\":\"江苏苏州\",\"country\":\"中国\"}}";
+
+		System.out.println("执行到testJquery方法了");
 		
-		System.out.println("执行到ajax方法了");
+		return data;
+	}
+	
+	
+	@RequestMapping("/jqueryList")
+	@ResponseBody
+	public String testJqueryList(){
+		String data = "[{\"id\":\"2010324268\",\"name\":\"林宇\",\"cla\":\"10软件\",\"sex\":\"男\",\"tel\":\"13800138000\"},{\"id\":\"2010324256\",\"name\":\"李四\",\"cla\":\"10网络\",\"sex\":\"女\",\"tel\":\"10010\"},{\"id\":\"2010324264\",\"name\":\"张三\",\"cla\":\"10软件\",\"sex\":\"男\",\"tel\":\"10086\"}]";
+
+		System.out.println("执行到jqueryList方法了");
 		
-		return "this is a test";
+		return data;
 	}
 
 	@RequestMapping("/itemInsert")

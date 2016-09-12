@@ -1,0 +1,10 @@
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+    }
+    table td {
+        text-align: center;
+        border: 1px solid gray;
+        padding: 3px 10px;
+    }
+</style>

@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/main.css"
+	href="<%=request.getContextPath()%>/css/main.css"
 	type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询单条数据</title>
@@ -25,21 +25,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="<%=request.getContextPath()%>/jquery/jquery-3.0.0.min.js">
 </script>
 
-<%-- <script type="text/javascript" src="<%=basePath%>/jquery/jquery-3.0.0.min.js"> </script> --%>
 
 <script type="text/javascript">
    function testjquery()
    {
-	   alert("参数testjquery");
     var user_name=$("#test").attr("value");
-    alert("参数testjquery == " + user_name);
+    alert("参数test == " + user_name);
+    
+    $.ajax({
+        type : "post",
+        url : '<%=request.getContextPath()%>/student/jquery',
+        dataType : 'json',
+        cache : false,
+        async : false,
+        success : function(json) {
+        	//var objJson = msg.responseText.evalJSON(); //此方法不行 
+        	//var aToStr=JSON.stringify(json); //次方法不行
+        	var aToStr = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
+        	
+        	alert("json == " + aToStr );
+        	   var str = "";
+                   str += "<tr><td>" + aToStr.name + "</td><td>" + aToStr.url + "</td><td>" + aToStr.page + "</td><td>" 
+                   + aToStr.isNonProfit + "</td><td>" + aToStr.address.street + "</td></tr>";
+               $("tbody").append(str);
+        },
+        error : function(error) {  
+        	alert("error == " + error );
+        }
+    });
+    
     }
   </script>
 
 <body>
-	<input id="test" value="jquery">
-	<input type="button" value="click me!" onclick="testjquery();">
-
 
 	<div align="center">
 		<h1>查询结果</h1>
@@ -51,6 +69,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	</div>
 
+
+<div align="center">
+<table>
+
+	<h1>单一json对象</h1>
+    <thead>
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>班别</td>
+            <td>性别</td>
+            <td>电话</td>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<input id="test" value="jquery">
+<input type="button" value="click me!" onclick="testjquery();">
+
+</div>
+
+
+
+
+<%-- <script src="<%=request.getContextPath()%>/js/jsonList.js">
+</script> --%>
+
+<script type="text/javascript">
+function testjqueryList()
+{
+	var user_name=$("#testList").attr("value");
+	alert("参数test == " + user_name);
+
+	$.ajax({
+		type : "post",
+		url : '<%=request.getContextPath()%>/student/jqueryList',
+		dataType : 'json',
+		cache : false,
+		async : false,
+		success : function(json) {
+			//var objJson = msg.responseText.evalJSON(); //此方法不行 
+			//var aToStr=JSON.stringify(json); //次方法不行
+			var msg = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
+
+			alert("json == " + msg );
+
+			var str = "";
+
+			for (i in msg) {
+				str += "<tr><td>" + msg[i].id + "</td><td>" + msg[i].name + "</td><td>" + msg[i].cla + "</td><td>" + msg[i].sex + "</td><td>" + msg[i].tel + "</td></tr>";
+			}
+			$("tbody").append(str);
+		},
+		error : function(error) {  
+			alert("error == " + error );
+		}
+	});
+
+}
+
+
+</script>
+<div align="center">
+<table>
+
+	<h1>json数组</h1>
+    <thead>
+        <tr>
+            <td>公司</td>
+            <td>地址</td>
+            <td>班别</td>
+            <td>性别</td>
+            <td>电话</td>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<input id="testList" value="jquery2">
+<input type="button" value="click me!" onclick="testjqueryList();">
+
+</div>
 
 </body>
 </html>
