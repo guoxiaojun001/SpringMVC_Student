@@ -81,6 +81,17 @@ public class LoginController {
 		
 		return "this is a test";
 	}
+	
+	
+	
+	@RequestMapping("/jquery")
+	@ResponseBody
+	public String testJquery(){
+		
+		System.out.println("执行到ajax方法了");
+		
+		return "this is a test";
+	}
 
 	@RequestMapping("/itemInsert")
 	public String recordItem() {
