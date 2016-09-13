@@ -9,9 +9,10 @@
 
 
 
-	<!-- 自动扫描 -->
+	<!-- 自动扫描web包 ,将带有注解的类 纳入spring容器管理 -->  
 	<context:component-scan base-package="com.cn.hnust" />
 
+	<!-- 引入jdbc配置文件 -->  
 	<import resource="classpath:spring-mybatis.xml" />
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
@@ -21,7 +22,6 @@
 
 	<bean id="aspectBean" class="com.cn.hnust.aop.TestAnnotationAspect" />
 	<bean id="aService" class="com.cn.hnust.service.impl.UserServiceImpl"></bean>
-
 
 
 	<!-- 用xml配置方式实现aop -->

@@ -1,0 +1,49 @@
+一、@ResponseBody
+作用： 
+      该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。
+使用时机：
+      返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；
+      
+      
+二、	“@Controller”,表明某类是一个controller。
+
+
+三、
+1、"@RequestMapping"的value值前后是否有“/”对请求的路径没有影响，
+即value="book" 、"/book"、"/book/"其效果是一样的
+
+
+2、含某变量的一类值,路径中的bookId可以当变量，@PathVariable 注解即提取路径中的变量值
+@RequestMapping(value="/get/{bookId}")
+public String getBookById(@PathVariable String bookId,Model model){
+		model.addAttribute("bookId", bookId);
+		return "book";
+	}
+	
+3.ant风格
+@RequestMapping(value="/get/id?")：可匹配“/get/id1”或“/get/ida”，但不匹配“/get/id”或“/get/idaa”;
+@RequestMapping(value="/get/id*")：可匹配“/get/idabc”或“/get/id”，但不匹配“/get/idabc/abc”;
+@RequestMapping(value="/get/id/*")：可匹配“/get/id/abc”，但不匹配“/get/idabc”;
+@RequestMapping(value="/get/id/**/{id}")：可匹配“/get/id/abc/abc/123”或“/get/id/123”，
+也就是Ant风格和URI模板变量风格可混用;
+
+
+4. 含正则表达式的一类值
+@RequestMapping(value="/get/{idPre:\\d+}-{idNum:\\d+}")：可以匹配“/get/123-1”，
+但不能匹配“/get/abc-1”，这样可以设计更加严格的规则。
+可以通过@PathVariable 注解提取路径中的变量(idPre,idNum)
+
+
+5. 或关系
+@RequestMapping(value={"/get","/fetch"} )即 /get或/fetch都会映射到该方法上
+
+5、method：  指定请求的method类型， GET、POST、PUT、DELETE等；
+@RequestMapping(value="/get/{bookid}",method={RequestMethod.GET,RequestMethod.POST})
+
+6、params
+@RequestMapping(params="action=del")，请求参数包含“action=del”,如：http://localhost:8080/book?action=del
+
+7、headers
+@RequestMapping(value="/header/id", headers = "Accept=application/json")：
+表示请求的URL必须为“/header/id 且 请求头中必须有“Accept =application/json”参数即可匹配。
+

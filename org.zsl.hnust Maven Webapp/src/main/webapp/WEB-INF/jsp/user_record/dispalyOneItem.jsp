@@ -37,12 +37,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         url : '<%=request.getContextPath()%>/student/jquery',
         dataType : 'json',
         cache : false,
-        async : false,
+        async : true,
         success : function(json) {
         	//var objJson = msg.responseText.evalJSON(); //此方法不行 
         	//var aToStr=JSON.stringify(json); //次方法不行
         	var aToStr = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
         	
+        	document.write(" 返回的数据是： " + aToStr )
         	alert("json == " + aToStr );
         	   var str = "";
                    str += "<tr><td>" + aToStr.name + "</td><td>" + aToStr.url + "</td><td>" + aToStr.page + "</td><td>" 
@@ -106,7 +107,7 @@ function testjqueryList()
 		type : "post",
 		url : '<%=request.getContextPath()%>/student/jqueryList',
 		dataType : 'json',
-		cache : false,
+		cache : true,
 		async : false,
 		success : function(json) {
 			//var objJson = msg.responseText.evalJSON(); //此方法不行 
