@@ -43,7 +43,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
         log.info("requestUri:"+requestUri);    
         log.info("contextPath:"+contextPath);    
         log.info("url:"+url);    
-          
         String username =  (String)request.getSession().getAttribute("user");   
         if(username == null){  
             log.info("Interceptor：跳转到login页面！");  
@@ -61,7 +60,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
     public void postHandle(HttpServletRequest request,    
             HttpServletResponse response, Object handler,    
             ModelAndView modelAndView) throws Exception {     
-        log.info("==============执行顺序: 2、postHandle================");    
+        log.info("==============执行顺序: 2、postHandle================");   
+        
+        
+        
         if(modelAndView != null){  //加入当前时间    
             modelAndView.addObject("var", "测试postHandle");    
         }    
