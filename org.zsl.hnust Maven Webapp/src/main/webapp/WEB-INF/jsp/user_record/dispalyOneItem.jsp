@@ -43,12 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	//var aToStr=JSON.stringify(json); //次方法不行
         	var aToStr = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
         	
-        	document.write(" 返回的数据是： " + aToStr )
         	alert("json == " + aToStr );
         	   var str = "";
                    str += "<tr><td>" + aToStr.name + "</td><td>" + aToStr.url + "</td><td>" + aToStr.page + "</td><td>" 
                    + aToStr.isNonProfit + "</td><td>" + aToStr.address.street + "</td></tr>";
-               $("tbody").append(str);
+               //$("tbody").append(str);
+               $("#tt1").append(str);
         },
         error : function(error) {  
         	alert("error == " + error );
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>电话</td>
         </tr>
     </thead>
-    <tbody></tbody>
+    <tbody id = "tt1"></tbody>
 </table>
 
 <input id="test" value="jquery">
@@ -121,7 +121,8 @@ function testjqueryList()
 			for (i in msg) {
 				str += "<tr><td>" + msg[i].id + "</td><td>" + msg[i].name + "</td><td>" + msg[i].cla + "</td><td>" + msg[i].sex + "</td><td>" + msg[i].tel + "</td></tr>";
 			}
-			$("tbody").append(str);
+			//$("tbody").append(str);
+			$(".demo22").append(str);
 		},
 		error : function(error) {  
 			alert("error == " + error );
@@ -146,7 +147,7 @@ function testjqueryList()
             <td>电话</td>
         </tr>
     </thead>
-    <tbody></tbody>
+    <tbody class = "demo22"></tbody>
 </table>
 
 <input id="testList" value="jquery2">
@@ -155,11 +156,8 @@ function testjqueryList()
 </div>
 
 
-<script type="text/javascript">
-var jsdata = testJs();
-alert("获取返回值jsdata == " + jsdata);
-</script>
-<input type="button" value="测试调用外部js" onclick="testJs();">
+
+<input type="button" value="测试调用外部js" onclick="testJs();" align="center">
 
 
 
