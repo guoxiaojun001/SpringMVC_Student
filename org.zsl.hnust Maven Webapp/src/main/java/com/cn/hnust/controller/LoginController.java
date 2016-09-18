@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +33,7 @@ public class LoginController {
 		// WEB-INF/jsp/user_record/record.jsp
 		
 		return "user_record/login";
+//		return "welcome_home";//测试easyui
 	}
 
 
@@ -214,6 +216,18 @@ public class LoginController {
 	}
 
 
+	
+	@RequestMapping("/detail/{id}")
+	public ModelAndView showItemById(@PathVariable int id,ModelAndView mv) {
+		// WEB-INF/jsp/user_record/record.jsp
+		User  user = userService.getUserById(id);
+		
+		mv.addObject("user", user);  //删除的数据
+		//设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面  
+		mv.setViewName("user_record/item_detail");  
+		
+		return mv;
+	}
 
 	@RequestMapping("/deleteById")
 	public String deleteById() {

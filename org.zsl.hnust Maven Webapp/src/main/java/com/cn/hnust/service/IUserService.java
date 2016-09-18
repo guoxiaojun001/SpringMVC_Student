@@ -18,4 +18,5 @@ public interface IUserService {
 	List<User> queryAll();
 	
 	void updateByPrimaryKey(User user);//根据id数据更新
+	
 }

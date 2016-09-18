@@ -29,7 +29,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
      *    再执行被拦截的Controller  
      *    然后进入拦截器链,  
      *    从最后一个拦截器往回执行所有的postHandle()  
-     *    接着再从最后一个拦截器往回执行所有的afterCompletion()  
+     *    接着再从最后一个拦截器往回执行所有的afterCompletion() 
+     *    
+     *     handler标识当前被拦截的目标对象 controller中的
      */    
     @Override    
     public boolean preHandle(HttpServletRequest request,    
@@ -65,7 +67,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
         
         
         if(modelAndView != null){  //加入当前时间    
-            modelAndView.addObject("var", "测试postHandle");    
+            modelAndView.addObject("var", "测试postHandle，这是拦截之后的消息，可以在拦截器中修改返回的数据，或者修改返回的页面");    
         }    
     }    
     
