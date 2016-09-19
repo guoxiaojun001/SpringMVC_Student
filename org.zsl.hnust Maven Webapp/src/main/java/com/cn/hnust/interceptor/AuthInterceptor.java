@@ -38,6 +38,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
             HttpServletResponse response, Object handler) throws Exception {    
   
         log.info("==============执行顺序: 1、preHandle================");    
+        
+        request.setCharacterEncoding("utf-8");//也可以在拦截器中配置org.springframework.web.filter.CharacterEncodingFilter
+        
         String requestUri = request.getRequestURI();  
         String contextPath = request.getContextPath();  
         String url = requestUri.substring(contextPath.length());  
@@ -48,6 +51,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
         String username =  (String)request.getSession().getAttribute("user");   
         if(username == null){  
             log.info("Interceptor：跳转到login页面！");  
+            //如果需要直接退出并且 跳转到指定页面
             request.getRequestDispatcher("/WEB-INF/jsp/user_record/login.jsp").forward(request, response);  
             return false;  
         }else  

@@ -31,9 +31,10 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String loginSystem() {
 		// WEB-INF/jsp/user_record/record.jsp
-		
-		return "user_record/login";
-//		return "welcome_home";//测试easyui
+
+		//		return "user_record/login";
+		return "user_record/ajax_login";
+		//		return "welcome_home";//测试easyui
 	}
 
 
@@ -66,17 +67,34 @@ public class LoginController {
 
 		if(admin.getName().equals(name.trim()) && admin.getPassword().equals(password)){
 			//登录成功
-			
+
 			System.out.println("-------login managerSystem--------");
 			request.getSession().setAttribute("user","admin");
-			
-			
+
+
 			return "user_record/manager";
 		}else{
 			//登录失败
 			return "user_record/loginfailure";
 		}
 
+	}
+
+	//通过ajax来请求登录结果
+	@RequestMapping("/loginAjax")
+	@ResponseBody
+	public int loginAjax(){
+		System.out.println("执行到loginAjax方法了");
+
+		return 1;
+	}
+
+	//通过ajax来请求登录结果
+	@RequestMapping("/ajaxSuccess")
+	public String ajaxSuccess(HttpServletRequest request){
+		System.out.println("执行到ajaxSuccess方法了");
+
+		return "user_record/manager";
 	}
 
 
@@ -216,16 +234,16 @@ public class LoginController {
 	}
 
 
-	
+
 	@RequestMapping("/detail/{id}")
 	public ModelAndView showItemById(@PathVariable int id,ModelAndView mv) {
 		// WEB-INF/jsp/user_record/record.jsp
 		User  user = userService.getUserById(id);
-		
+
 		mv.addObject("user", user);  //删除的数据
 		//设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面  
 		mv.setViewName("user_record/item_detail");  
-		
+
 		return mv;
 	}
 

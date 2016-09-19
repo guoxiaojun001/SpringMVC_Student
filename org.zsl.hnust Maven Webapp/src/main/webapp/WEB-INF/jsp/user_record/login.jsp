@@ -12,22 +12,15 @@
 	type="text/css" />
 </head>
 
-<!-- <script language="javascript">
-function s(){
-var d=document.form1.text1.value;
-alert(d);
-}
-</script> -->
 
 <body>
-
 
 	<h1>登录页面</h1>
 
 	<div id="main">
 		<div class="newcontainer" id="user_record">
 			<form name="mainForm"
-				action="<%=request.getContextPath()%>/student/loginverify" method="post">
+				action="<%=request.getContextPath()%>/student/loginverify" method="post"> 
 				<div>
 					<span>用户名称:</span><input type="text" id="user_name"
 						name="user_name">
