@@ -83,8 +83,14 @@ public class LoginController {
 	//通过ajax来请求登录结果
 	@RequestMapping("/loginAjax")
 	@ResponseBody
-	public int loginAjax(){
+	public int loginAjax(HttpServletRequest request){
 		System.out.println("执行到loginAjax方法了");
+		
+		String name = request.getParameter("user_name");
+		String password = request.getParameter("password");
+
+		System.out.println("name = " + name);
+		System.out.println("password = " + password);
 
 		return 1;
 	}
