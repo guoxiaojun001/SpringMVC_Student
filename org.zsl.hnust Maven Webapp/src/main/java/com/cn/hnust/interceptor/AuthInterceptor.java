@@ -1,6 +1,8 @@
 package com.cn.hnust.interceptor;
 
 
+import java.net.URLEncoder;
+
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
 
@@ -8,8 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;  
 import org.springframework.web.servlet.ModelAndView;  
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-
+import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 
 
@@ -52,7 +53,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
         if(username == null){  
             log.info("Interceptor：跳转到login页面！");  
             //如果需要直接退出并且 跳转到指定页面
-            request.getRequestDispatcher("/WEB-INF/jsp/user_record/login.jsp").forward(request, response);  
+           // request.getRequestDispatcher("/WEB-INF/jsp/user_record/login.jsp").forward(request, response);  
+            
+            request.getRequestDispatcher("/student/login" ).forward(request, response);//跳转到到登录页，浏览器地址不变
+            //response.sendRedirect(request.getContextPath() + "/student/login" );//重定向到登录页，浏览器地址发生改变
+            
             return false;  
         }else  
             return true;     

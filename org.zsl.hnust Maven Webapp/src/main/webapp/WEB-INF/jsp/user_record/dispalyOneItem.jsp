@@ -41,7 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         success : function(json) {
         	//var objJson = msg.responseText.evalJSON(); //此方法不行 
         	//var aToStr=JSON.stringify(json); //次方法不行
-        	var aToStr = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
+        	//json字符串转换为Object 
+        	//var aToStr = eval("("+json+")");  //如果接受的是文本格式 将接收的文本用解析成Json格式 
+        	var aToStr = JSON.parse(json);
         	
         	alert("json == " + aToStr );
         	   var str = "";

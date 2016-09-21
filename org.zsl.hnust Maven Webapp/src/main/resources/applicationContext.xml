@@ -7,7 +7,14 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd  
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
+<!-- 
+<mvc:annotation-driven/>相当于注册了
+DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，
+配置一些messageconverter。即解决了@Controller注解的使用前提配置。
 
+<context:annotation-config/>是对包进行扫描，实现注释驱动Bean定义，
+同时将bean自动注入容器中使用。即解决了@Controller标识的类的bean的注入和使用。
+ -->
 
 	<!-- 自动扫描web包 ,将带有注解的类 纳入spring容器管理 -->  
 	<context:component-scan base-package="com.cn.hnust" />

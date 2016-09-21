@@ -22,7 +22,7 @@ function ajaxLogin()
  	var user_name = $("#user_name").val();
 	var password = $("#password").val(); 
     alert("参数user_name = " + user_name + password);
-	
+    
 	 $.ajax({
 	    type : "post",
 	    url : '<%=request.getContextPath()%>/student/loginAjax',
