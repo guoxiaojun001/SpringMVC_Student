@@ -31,7 +31,6 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String loginSystem() {
 		// WEB-INF/jsp/user_record/record.jsp
-
 		//		return "user_record/login";
 		return "user_record/ajax_login";
 		//		return "welcome_home";//测试easyui
@@ -44,10 +43,8 @@ public class LoginController {
 		//获取用户输入信息，判断登录状态
 		String name = request.getParameter("user_name");
 		String password = request.getParameter("password");
-
 		System.out.println("name = " + name);
 		System.out.println("password = " + password);
-
 		if(null == name || null == password){
 			return "user_record/loginfailure";
 		}
@@ -63,15 +60,10 @@ public class LoginController {
 		}
 
 		System.out.println("数据库查询的账号信息为 ： " + admin.getName() + " : " + admin.getPassword());
-
-
 		if(admin.getName().equals(name.trim()) && admin.getPassword().equals(password)){
 			//登录成功
-
 			System.out.println("-------login managerSystem--------");
 			request.getSession().setAttribute("user","admin");
-
-
 			return "user_record/manager";
 		}else{
 			//登录失败
