@@ -1,0 +1,8 @@
+1、jsp编译后就变成了servlet，jsp的本质就是Servlet，jvm只能识别java类，不能识别jsp，web容器将jsp代码编译成jvm能识别的java类
+2、jsp擅长于页面展示，servlet则擅长逻辑控制
+3、Servlet中没有内置对象，Jsp中的内置对象都是必须通过HttpServletRequest对象，HttpServletResponse对象以及HttpServlet对象得到.
+Jsp是Servlet的一种简化，使用Jsp只需要完成程序员需要输出到客户端的内容，Jsp中的Java脚本如何镶嵌到一个类中，由Jsp容器完成。
+而Servlet则是个完整的Java类，这个类的Service方法用于生成对客户端的响应。
+
+
+SERVLET 是servler和applet的缩写
